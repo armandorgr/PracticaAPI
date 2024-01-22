@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Templates.MovieTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.Modelo"
+    x:DataType="model:Movie">
+    <Border
+        Background="Gray"
+        Margin="50"
+        Padding="0"
+        Style="{StaticResource custom_border}">
+        <Grid MaximumWidthRequest="350" RowDefinitions="*,auto" RowSpacing="15">
+            <Image
+                Grid.Row="0"
+                HeightRequest="400"
+                Source="{Binding Poster_Path, StringFormat='https://image.tmdb.org/t/p/original/{0}'}"
+                WidthRequest="300" />
+            <HorizontalStackLayout
+                Grid.Row="1"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center">
+                <Label
+                    MaximumWidthRequest="100"
+                    Text="{Binding Title}"
+                    VerticalOptions="Center" />
+                <Button
+                    Clicked="Button_Clicked"
+                    Style="{StaticResource btn_green}"
+                    Text="Details" />
+                <Button
+                    Clicked="FavClicked"
+                    Style="{StaticResource btn_green}"
+                    Text="Fav" />
+                <Border
+                    Padding="0"
+                    BackgroundColor="White"
+                    IsVisible="{Binding IsFavorite}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+                    <Image
+                        HeightRequest="40"
+                        HorizontalOptions="Center"
+                        Source="heart_full.png"
+                        VerticalOptions="Center"
+                        WidthRequest="50" />
+                </Border>
+            </HorizontalStackLayout>
+        </Grid>
+    </Border>
+</ContentView>

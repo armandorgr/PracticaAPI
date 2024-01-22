@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pl:PlantillaGeneral
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Vistas.MovieDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pl="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.Templates"
+    xmlns:vm="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.VistaModelo"
+    Title="MovieDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:MovieDetailsViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView VerticalOptions="Start">
+        <Grid
+            ColumnDefinitions="*,*"
+            MinimumHeightRequest="1000"
+            VerticalOptions="StartAndExpand">
+            <VerticalStackLayout
+                Grid.Column="0"
+                MaximumHeightRequest="650"
+                MaximumWidthRequest="400">
+                <Label
+                    Margin="20"
+                    FontAttributes="Bold"
+                    FontSize="Header"
+                    HorizontalOptions="Center"
+                    Text="{Binding SelectedMovie.Title}" />
+                <Border Style="{StaticResource custom_border}">
+                    <Image Source="{Binding SelectedMovie.Poster_Path, StringFormat='https://image.tmdb.org/t/p/original/{0}'}" />
+                </Border>
+                <HorizontalStackLayout Margin="0,20" Spacing="80">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="Start"
+                        Text="{Binding SelectedMovie.Release_Date, StringFormat='Release Date {0}'}" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="End"
+                        Text="{Binding SelectedMovie.Vote_Average, StringFormat='Vote Average {0}'}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Border
+                Grid.Column="1"
+                Margin="20,0"
+                Style="{StaticResource custom_border}"
+                VerticalOptions="Center">
+                <VerticalStackLayout>
+                    <Label
+                        Padding="10"
+                        Background="Gray"
+                        FontAttributes="Italic"
+                        FontSize="25"
+                        Text="{Binding SelectedMovie.Overview}" />
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
+</pl:PlantillaGeneral>

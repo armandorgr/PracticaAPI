@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<te:PlantillaLogIn
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Vistas.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:te="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.Templates"
+    xmlns:vm="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.VistaModelo"
+    Title="">
+
+    <ContentPage.BindingContext>
+        <vm:ValidarLogin />
+    </ContentPage.BindingContext>
+
+    <Grid ColumnDefinitions="*">
+        <Border Grid.Column="0" Style="{StaticResource custom_border}">
+            <ScrollView>
+                <VerticalStackLayout Style="{StaticResource Main_container}">
+                    <Label Style="{StaticResource Title}" Text="Log in" />
+                    <VerticalStackLayout Margin="0,50" Spacing="20">
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Nick">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="EntryLabelTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Grid RowDefinitions="auto,auto">
+                                <Entry
+                                    x:Name="nickEntry"
+                                    Grid.Row="0"
+                                    FontSize="18"
+                                    Placeholder="Nick name"
+                                    Text="{Binding NombreUser}" />
+                                <HorizontalStackLayout
+                                    x:Name="NickMenu"
+                                    Grid.Row="1"
+                                    HorizontalOptions="Start"
+                                    MaximumWidthRequest="100"
+                                    ScaleY="0">
+                                    <Button
+                                        Command="{Binding copyNickCommand}"
+                                        Style="{StaticResource btn_green}"
+                                        Text="Copy" />
+                                    <Button
+                                        Command="{Binding cutNickCommand}"
+                                        Style="{StaticResource btn_green}"
+                                        Text="Cut" />
+                                    <Button
+                                        Command="{Binding pasteNickCommand}"
+                                        Style="{StaticResource btn_green}"
+                                        Text="Paste" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Password">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="PasswordLabelTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Grid RowDefinitions="auto,auto">
+                                <Entry
+                                    Grid.Row="0"
+                                    Placeholder="Password"
+                                    Style="{StaticResource password_entry}"
+                                    Text="{Binding Password}" />
+                                <HorizontalStackLayout
+                                    x:Name="passwordMenu"
+                                    Grid.Row="1"
+                                    HorizontalOptions="Start"
+                                    MaximumWidthRequest="100"
+                                    ScaleY="0">
+                                    <Button
+                                        Command="{Binding copyPasswordCommand}"
+                                        Style="{StaticResource btn_green}"
+                                        Text="Copy" />
+                                    <Button
+                                        Command="{Binding cutPasswordCommand}"
+                                        Style="{StaticResource btn_green}"
+                                        Text="Cut" />
+                                    <Button
+                                        Command="{Binding pastePasswordCommand}"
+                                        Style="{StaticResource btn_green}"
+                                        Text="Paste" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Button
+                                Command="{Binding validarLogCommand}"
+                                Style="{StaticResource btn_green}"
+                                Text="Login" />
+                            <Button
+                                Clicked="RegisteredClicked"
+                                Style="{StaticResource btn_green}"
+                                Text="Register" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    <CollectionView HorizontalOptions="Center" ItemsSource="{Binding Errores}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <te:ErrorTemplate />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
+
+</te:PlantillaLogIn>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Templates.UserTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.Modelo"
+    x:DataType="model:Usuario">
+    <Border Margin="20" Style="{StaticResource custom_border}">
+        <Grid
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White},
+                                              Dark={StaticResource Gray900}}"
+            ColumnDefinitions="auto,auto"
+            ColumnSpacing="50"
+            WidthRequest="400">
+            <Image
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                Source="user.png"
+                WidthRequest="80" />
+            <Grid
+                Grid.Column="1"
+                ColumnDefinitions="*"
+                RowDefinitions="*,*,*">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource lbl_user}"
+                    Text="{Binding NombreUser, StringFormat='Nick: {0}'}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource lbl_user}"
+                    Text="{Binding Nombre, StringFormat='Nombre:{0}'}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Style="{StaticResource lbl_user}"
+                    Text="{Binding Edad, StringFormat='Edad: {0}'}" />
+            </Grid>
+        </Grid>
+    </Border>
+</ContentView>

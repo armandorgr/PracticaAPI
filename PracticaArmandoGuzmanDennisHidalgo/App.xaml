@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PracticaArmandoGuzmanDennisHidalgo">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="login">
+                <Grid RowDefinitions="auto,*">
+                    <Border Grid.Row="0" Style="{StaticResource custom_border}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="0,0,10,10" />
+                        </Border.StrokeShape>
+                        <Grid
+                            Padding="0,5"
+                            BackgroundColor="{StaticResource Gray500}"
+                            ColumnDefinitions="auto,*"
+                            HeightRequest="85">
+                            <HorizontalStackLayout
+                                Grid.Column="0"
+                                Padding="6,0"
+                                Spacing="20">
+                                <Image
+                                    Grid.Column="0"
+                                    MaximumHeightRequest="70"
+                                    Source="icon.png" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontFamily=""
+                                    FontSize="30"
+                                    Style="{StaticResource Title}"
+                                    Text="FilmQuest"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                    <ContentPresenter Grid.Row="1" />
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="general">
+                <Grid RowDefinitions="auto,*,auto">
+                    <Border Grid.Row="0" Style="{StaticResource custom_border}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="0,0,10,10" />
+                        </Border.StrokeShape>
+                        <Grid
+                            Padding="0,5"
+                            BackgroundColor="{StaticResource Gray500}"
+                            ColumnDefinitions="auto,*"
+                            HeightRequest="85">
+                            <HorizontalStackLayout
+                                Grid.Column="0"
+                                Padding="6,0"
+                                Spacing="20">
+                                <Image
+                                    Grid.Column="0"
+                                    MaximumHeightRequest="70"
+                                    Source="icon.png" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontFamily=""
+                                    FontSize="30"
+                                    Style="{StaticResource Title}"
+                                    Text="FilmQuest"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                            <Grid Grid.Column="1" ColumnDefinitions="*,*,*">
+                                <Button
+                                    Grid.Column="0"
+                                    Clicked="FavoritesClicked"
+                                    HeightRequest="50"
+                                    Style="{StaticResource btn_green}"
+                                    Text="Favorites"
+                                    WidthRequest="100" />
+                                <Button
+                                    Grid.Column="2"
+                                    Clicked="ApiClicked"
+                                    HeightRequest="50"
+                                    Style="{StaticResource btn_green}"
+                                    Text="API"
+                                    WidthRequest="100" />
+                                <Button
+                                    Grid.Column="1"
+                                    Clicked="LogOutClicked"
+                                    HeightRequest="50"
+                                    Style="{StaticResource btn_green}"
+                                    Text="Log out"
+                                    WidthRequest="100" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ContentPresenter Grid.Row="1" />
+                    <Grid
+                        Grid.Row="2"
+                        Padding="0,5"
+                        BackgroundColor="{StaticResource Gray500}"
+                        ColumnDefinitions="auto,*">
+                        <HorizontalStackLayout
+                            Grid.Column="0"
+                            Padding="6,0"
+                            Spacing="20">
+                            <Label
+                                Grid.Column="1"
+                                FontFamily=""
+                                FontSize="30"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource Title}"
+                                Text="Armando Guzmán"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <Grid Grid.Column="1" ColumnDefinitions="*,*,*,*,*">
+                            <Button
+                                Grid.Column="2"
+                                Clicked="LinkedInClicked"
+                                HeightRequest="50"
+                                ImageSource="linkedin.png"
+                                Style="{StaticResource btn_green}"
+                                WidthRequest="100" />
+                            <Button
+                                Grid.Column="3"
+                                Clicked="PortFolioClicked"
+                                HeightRequest="50"
+                                Style="{StaticResource btn_green}"
+                                Text="Portfolio"
+                                WidthRequest="100" />
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

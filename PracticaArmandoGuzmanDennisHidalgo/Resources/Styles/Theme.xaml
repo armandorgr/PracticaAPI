@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Resources.Styles.Theme"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!--
+        Uso este diccionario de recursos para crear estilos reutilizables accesibles desde cualquier contenPage, de esta forma el XAML queda
+        mas corto y entendible.
+        El appThemeBinding sirve para cambiar el valor en funcion de si la app esta en modo oscuro o claro.
+    -->
+    <Style x:Key="btn_green" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Mint}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MaximumWidthRequest" Value="200" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="TextColor" Value="{StaticResource Black}" />
+    </Style>
+
+    <Style x:Key="lbl_user" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+    </Style>
+
+    <Style x:Key="custom_border" TargetType="Border">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Stroke" Value="{StaticResource Mint}" />
+        <Setter Property="StrokeThickness" Value="5" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow
+                    Brush="{StaticResource Black}"
+                    Opacity="0.7"
+                    Radius="50"
+                    Offset="20,20" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="10" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Title" TargetType="Label">
+        <Setter Property="Margin" Value="0,10" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="36" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
+    </Style>
+
+    <Style x:Key="Main_container" TargetType="VerticalStackLayout">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="MinimumWidthRequest" Value="350" />
+        <Setter Property="WidthRequest" Value="600" />
+    </Style>
+
+    <Style x:Key="input_row" TargetType="VerticalStackLayout">
+        <Setter Property="Padding" Value="30" />
+        <Setter Property="Spacing" Value="10" />
+    </Style>
+
+    <Style x:Key="password_entry" TargetType="Entry">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="IsPassword" Value="True" />
+    </Style>
+</ResourceDictionary>

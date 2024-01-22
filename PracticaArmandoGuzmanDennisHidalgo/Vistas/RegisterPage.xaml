@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<te:PlantillaLogIn
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Vistas.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:te="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.Templates"
+    xmlns:vm="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.VistaModelo"
+    Title="">
+    <ContentPage.BindingContext>
+        <vm:ValidarRegistro />
+    </ContentPage.BindingContext>
+    <Grid ColumnDefinitions="*">
+        <Border Grid.Column="0" Style="{StaticResource custom_border}">
+            <ScrollView>
+                <VerticalStackLayout Style="{StaticResource Main_container}">
+                    <Label Style="{StaticResource Title}" Text="Register" />
+                    <VerticalStackLayout Margin="0,50" Spacing="20">
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Nick" />
+                            <Entry
+                                FontSize="18"
+                                Placeholder="Nick name"
+                                Text="{Binding NombreUser}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Full Name" />
+                            <Entry
+                                FontSize="18"
+                                Placeholder="Full Name"
+                                Text="{Binding Nombre}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Age" />
+                            <Entry
+                                FontSize="18"
+                                Placeholder="Age"
+                                Text="{Binding Edad}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Password" />
+                            <Entry
+                                Placeholder="Password"
+                                Style="{StaticResource password_entry}"
+                                Text="{Binding Password}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Style="{StaticResource input_row}">
+                            <Label FontSize="20" Text="Repeat Password" />
+                            <Entry
+                                Placeholder="Repeat Password"
+                                Style="{StaticResource password_entry}"
+                                Text="{Binding RepeatPassword}" />
+                        </VerticalStackLayout>
+                        <Button
+                            Command="{Binding validarCommand}"
+                            Style="{StaticResource btn_green}"
+                            Text="Register" />
+                    </VerticalStackLayout>
+                    <CollectionView HorizontalOptions="Center" ItemsSource="{Binding Errores}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <te:ErrorTemplate />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </Border>
+    </Grid>
+
+</te:PlantillaLogIn>

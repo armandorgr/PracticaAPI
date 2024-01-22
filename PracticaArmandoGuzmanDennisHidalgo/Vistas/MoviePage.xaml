@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tem:PlantillaGeneral
+    x:Class="PracticaArmandoGuzmanDennisHidalgo.Vistas.MoviePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:tem="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.Templates"
+    xmlns:vm="clr-namespace:PracticaArmandoGuzmanDennisHidalgo.VistaModelo"
+    Title="MoviePage">
+
+    <ContentPage.BindingContext>
+        <vm:MoviesViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid RowDefinitions="*,auto,*" VerticalOptions="Start">
+            <Grid
+                Grid.Row="0"
+                Margin="10"
+                ColumnDefinitions="*,auto,auto"
+                MaximumHeightRequest="80">
+                <SearchBar
+                    Grid.Column="0"
+                    SearchCommand="{Binding buscarCommand}"
+                    Text="{Binding Busqueda}" />
+                <Picker
+                    Title="Property"
+                    Grid.Column="1"
+                    ItemsSource="{Binding Parametros}"
+                    SelectedItem="{Binding ParametroSeleccionado}" />
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding ResetCommand}"
+                    Style="{StaticResource btn_green}"
+                    Text="Reset" />
+            </Grid>
+            <CollectionView
+                Grid.Row="1"
+                ItemSizingStrategy="MeasureFirstItem"
+                ItemsLayout="VerticalGrid, 2"
+                ItemsSource="{Binding ResultMovies}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <tem:MovieTemplate />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
+                <Button
+                    Command="{Binding movePageCommand}"
+                    CommandParameter="false"
+                    Style="{StaticResource btn_green}"
+                    Text="Prev" />
+                <Button Style="{StaticResource btn_green}" Text="{Binding CurrentPage}" />
+                <Button
+                    Command="{Binding movePageCommand}"
+                    CommandParameter="true"
+                    Style="{StaticResource btn_green}"
+                    Text="Next" />
+            </HorizontalStackLayout>
+        </Grid>
+    </ScrollView>
+
+</tem:PlantillaGeneral>
